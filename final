@@ -9,39 +9,52 @@ e2 = Entry(root,width=20)
 e2.grid(row=1,column=1)
 
 B = 0
+C = 0
 z = 0
 r = 0
-c = 0
-
 out=4
+
 def Bubble():
     n = int(e1.get())
     global z
     global B
+    global C
     global r
     global out
-    global c
+    
+    C = 0
     if z == 0:
         z+=1
         A = [int(i) for i in e2.get().split()]
     else:
         A = B
-    if r == n-1:
-        r = 0
         
     for k in range (r,n-1):
+        r+=1
         if A[k] > A[k+1]:
             A[k], A[k+1] = A[k+1] , A[k]
             B = A
-            r+=1
+            C = 1
             break
-        else:
+        
+    
+    if r == n-1:
+        r = 0   
+        
+    if C == 0:
+        for k in range (r,n-1):
             r+=1
-            if r == n-1:
-                r = 0
-            
+            if A[k] > A[k+1]:
+                A[k], A[k+1] = A[k+1] , A[k]
+                B = A
+                C = 1
+                break
+    if C == 0:
+        A = "набор чисел упорядочен"
+    
     myLabel3 = Label(root,text=A).grid(row=out,column=1)
     out+=1
+    
     
         
 b = Button(root,text="Start", command = Bubble).grid(row=2,column=2)
