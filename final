@@ -1,4 +1,4 @@
-om tkinter import *
+from tkinter import *
 root = Tk()
 Label(text="Количество элементов").grid(row=0, column=0)
 Label(text="Элементы").grid(row=1, column=0)
