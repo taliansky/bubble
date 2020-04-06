@@ -1,4 +1,4 @@
-from tkinter import *
+om tkinter import *
 root = Tk()
 Label(text="Количество элементов").grid(row=0, column=0)
 Label(text="Элементы").grid(row=1, column=0)
@@ -12,6 +12,7 @@ B = 0
 C = 0
 z = 0
 r = 0
+i = 0
 out=4
 
 def Bubble():
@@ -20,6 +21,7 @@ def Bubble():
     global B
     global C
     global r
+    global i
     global out
     
     C = 0
@@ -28,8 +30,8 @@ def Bubble():
         A = [int(i) for i in e2.get().split()]
     else:
         A = B
-        
-    for k in range (r,n-1):
+    
+    for k in range (r,n-i-1):
         r+=1
         if A[k] > A[k+1]:
             A[k], A[k+1] = A[k+1] , A[k]
@@ -38,11 +40,12 @@ def Bubble():
             break
         
     
-    if r == n-1:
+    if r == n-i-1:
         r = 0   
+        i +=1
         
     if C == 0:
-        for k in range (r,n-1):
+        for k in range (r,n-i-1):
             r+=1
             if A[k] > A[k+1]:
                 A[k], A[k+1] = A[k+1] , A[k]
@@ -54,7 +57,6 @@ def Bubble():
     
     myLabel3 = Label(root,text=A).grid(row=out,column=1)
     out+=1
-    
     
         
 b = Button(root,text="Start", command = Bubble).grid(row=2,column=2)
